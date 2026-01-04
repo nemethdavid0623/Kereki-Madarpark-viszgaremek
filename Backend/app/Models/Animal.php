@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Animal extends Model
 {
 
+    protected $primaryKey = 'ID';
     protected $table = 'animal';
 
     public function species()

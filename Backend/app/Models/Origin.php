@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Origin extends Model
 {
+
+    protected $primaryKey = 'ID';
     protected $table = 'origin';
 
     public function animal()

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Imageanimal extends Model
 {
+    protected $primaryKey = 'ID';
     protected $table = 'imageanimal';
 
     public function animal()
