@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Animalclass;
+use App\Models\Species;
 use Illuminate\Http\Request;
 
-class AnimalclassController extends Controller
+class SpeciesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class AnimalclassController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Animalclass $animalclass)
+    public function show(Species $species)
     {
         //
     }
@@ -42,7 +42,7 @@ class AnimalclassController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Animalclass $animalclass)
+    public function edit(Species $species)
     {
         //
     }
@@ -50,7 +50,7 @@ class AnimalclassController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Animalclass $animalclass)
+    public function update(Request $request, Species $species)
     {
         //
     }
@@ -58,7 +58,7 @@ class AnimalclassController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Animalclass $animalclass)
+    public function destroy(Species $species)
     {
         //
     }
