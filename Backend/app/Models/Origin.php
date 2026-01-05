@@ -12,6 +12,6 @@ class Origin extends Model
 
     public function animal()
     {
-        return $this->belongsTo(animal::class, 'OriginID');
+        return $this->hasMany(animal::class, 'OriginID', "ID");
     }
 }

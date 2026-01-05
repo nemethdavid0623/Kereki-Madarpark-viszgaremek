@@ -12,7 +12,7 @@ class AnimalController extends Controller
      */
     public function index()
     {
-        $allData = Animal::with('image', 'origin', 'species')->get();
+        $allData = Animal::with( 'image','origin', 'species')->get();
         return response()->json($allData);
     }
 

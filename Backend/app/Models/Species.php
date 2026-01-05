@@ -12,6 +12,6 @@ class Species extends Model
 
     public function animal()
     {
-        return $this->belongsTo(animal::class, 'SpeciesID');
+        return $this->hasMany(animal::class, 'SpeciesID');
     }
 }

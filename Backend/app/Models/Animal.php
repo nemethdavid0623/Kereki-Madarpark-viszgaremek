@@ -13,16 +13,16 @@ class Animal extends Model
 
     public function species()
     {
-        return $this->hasMany(species::class, 'SpeciesID');
+        return $this->belongsTo(species::class, 'SpeciesID');
     }
 
     public function imageanimal()
     {
-        return $this->hasMany(imageanimal::class, 'AnimalID');
+        return $this->belongsTo(imageanimal::class, 'AnimalID');
     }
 
     public function origin()
     {
-        return $this->hasMany(origin::class, 'OriginID');
+        return $this->belongsTo(origin::class, 'OriginID');
     }
 }
