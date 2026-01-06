@@ -1,0 +1,436 @@
+{
+  "Osztaly": [
+    {
+      "ID": 1,
+      "Nev": "Emlős"
+    },
+    {
+      "ID": 2,
+      "Nev": "Madarak"
+    },
+    {
+      "ID": 3,
+      "Nev": "Hüllők"
+    }
+  ],
+  "Szarmazas": [
+    {
+      "ID": 1,
+      "Nev": "Afrika"
+    },
+    {
+      "ID": 2,
+      "Nev": "Európa"
+    },
+    {
+      "ID": 3,
+      "Nev": "Ázsia"
+    }
+  ],
+  "Kep": [
+    {
+      "ID": 1,
+      "Kep": "oroszlán.jpg"
+    },
+    {
+      "ID": 2,
+      "Kep": "tigris.jpg"
+    },
+    {
+      "ID": 3,
+      "Kep": "elefánt.jpg"
+    },
+    {
+      "ID": 4,
+      "Kep": "zsiráf.jpg"
+    },
+    {
+      "ID": 5,
+      "Kep": "zebra.jpg"
+    },
+    {
+      "ID": 6,
+      "Kep": "farkas.jpg"
+    },
+    {
+      "ID": 7,
+      "Kep": "medve.jpg"
+    },
+    {
+      "ID": 8,
+      "Kep": "róka.jpg"
+    },
+    {
+      "ID": 9,
+      "Kep": "hiúz.jpg"
+    },
+    {
+      "ID": 10,
+      "Kep": "ló.jpg"
+    },
+    {
+      "ID": 11,
+      "Kep": "kenguru.jpg"
+    },
+    {
+      "ID": 12,
+      "Kep": "panda.jpg"
+    },
+    {
+      "ID": 13,
+      "Kep": "koala.jpg"
+    },
+    {
+      "ID": 14,
+      "Kep": "szarvas.jpg"
+    },
+    {
+      "ID": 15,
+      "Kep": "vaddisznó.jpg"
+    },
+    {
+      "ID": 16,
+      "Kep": "kígyó.jpg"
+    },
+    {
+      "ID": 17,
+      "Kep": "krokodil.jpg"
+    },
+    {
+      "ID": 18,
+      "Kep": "sas.jpg"
+    },
+    {
+      "ID": 19,
+      "Kep": "bagoly.jpg"
+    },
+    {
+      "ID": 20,
+      "Kep": "pingvin.jpg"
+    }
+  ],
+  "Allat": [
+    {
+      "ID": 1,
+      "FajNev": "Oroszlán",
+      "Darab": 1,
+      "EladoDarab": 5,
+      "Leiras": "Oroszlán leírása",
+      "OsztalyID": 3,
+      "SzarmazasID": 3,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 2,
+      "FajNev": "Tigris",
+      "Darab": 8,
+      "EladoDarab": 4,
+      "Leiras": "Tigris leírása",
+      "OsztalyID": 3,
+      "SzarmazasID": 2,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 3,
+      "FajNev": "Elefánt",
+      "Darab": 8,
+      "EladoDarab": 4,
+      "Leiras": "Elefánt leírása",
+      "OsztalyID": 3,
+      "SzarmazasID": 2,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 4,
+      "FajNev": "Zsiráf",
+      "Darab": 1,
+      "EladoDarab": 4,
+      "Leiras": "Zsiráf leírása",
+      "OsztalyID": 3,
+      "SzarmazasID": 2,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 5,
+      "FajNev": "Zebra",
+      "Darab": 1,
+      "EladoDarab": 4,
+      "Leiras": "Zebra leírása",
+      "OsztalyID": 2,
+      "SzarmazasID": 1,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 6,
+      "FajNev": "Farkas",
+      "Darab": 13,
+      "EladoDarab": 5,
+      "Leiras": "Farkas leírása",
+      "OsztalyID": 2,
+      "SzarmazasID": 1,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 7,
+      "FajNev": "Medve",
+      "Darab": 3,
+      "EladoDarab": 0,
+      "Leiras": "Medve leírása",
+      "OsztalyID": 3,
+      "SzarmazasID": 2,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 8,
+      "FajNev": "Róka",
+      "Darab": 10,
+      "EladoDarab": 0,
+      "Leiras": "Róka leírása",
+      "OsztalyID": 2,
+      "SzarmazasID": 1,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 9,
+      "FajNev": "Hiúz",
+      "Darab": 3,
+      "EladoDarab": 5,
+      "Leiras": "Hiúz leírása",
+      "OsztalyID": 2,
+      "SzarmazasID": 2,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 10,
+      "FajNev": "Ló",
+      "Darab": 10,
+      "EladoDarab": 2,
+      "Leiras": "Ló leírása",
+      "OsztalyID": 1,
+      "SzarmazasID": 1,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 11,
+      "FajNev": "Kenguru",
+      "Darab": 4,
+      "EladoDarab": 4,
+      "Leiras": "Kenguru leírása",
+      "OsztalyID": 2,
+      "SzarmazasID": 2,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 12,
+      "FajNev": "Panda",
+      "Darab": 4,
+      "EladoDarab": 0,
+      "Leiras": "Panda leírása",
+      "OsztalyID": 2,
+      "SzarmazasID": 3,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 13,
+      "FajNev": "Koala",
+      "Darab": 13,
+      "EladoDarab": 5,
+      "Leiras": "Koala leírása",
+      "OsztalyID": 3,
+      "SzarmazasID": 3,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 14,
+      "FajNev": "Szarvas",
+      "Darab": 3,
+      "EladoDarab": 3,
+      "Leiras": "Szarvas leírása",
+      "OsztalyID": 3,
+      "SzarmazasID": 2,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 15,
+      "FajNev": "Vaddisznó",
+      "Darab": 14,
+      "EladoDarab": 4,
+      "Leiras": "Vaddisznó leírása",
+      "OsztalyID": 3,
+      "SzarmazasID": 1,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 16,
+      "FajNev": "Kígyó",
+      "Darab": 15,
+      "EladoDarab": 4,
+      "Leiras": "Kígyó leírása",
+      "OsztalyID": 2,
+      "SzarmazasID": 2,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 17,
+      "FajNev": "Krokodil",
+      "Darab": 3,
+      "EladoDarab": 0,
+      "Leiras": "Krokodil leírása",
+      "OsztalyID": 3,
+      "SzarmazasID": 2,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 18,
+      "FajNev": "Sas",
+      "Darab": 5,
+      "EladoDarab": 3,
+      "Leiras": "Sas leírása",
+      "OsztalyID": 2,
+      "SzarmazasID": 3,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 19,
+      "FajNev": "Bagoly",
+      "Darab": 12,
+      "EladoDarab": 0,
+      "Leiras": "Bagoly leírása",
+      "OsztalyID": 2,
+      "SzarmazasID": 3,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    },
+    {
+      "ID": 20,
+      "FajNev": "Pingvin",
+      "Darab": 7,
+      "EladoDarab": 5,
+      "Leiras": "Pingvin leírása",
+      "OsztalyID": 3,
+      "SzarmazasID": 3,
+      "Eletter": "Természetes élőhely",
+      "Etetes": "Napi etetés"
+    }
+  ],
+  "KepKapcsolo": [
+    {
+      "ID": 1,
+      "KepID": 1,
+      "AllatID": 1
+    },
+    {
+      "ID": 2,
+      "KepID": 2,
+      "AllatID": 2
+    },
+    {
+      "ID": 3,
+      "KepID": 3,
+      "AllatID": 3
+    },
+    {
+      "ID": 4,
+      "KepID": 4,
+      "AllatID": 4
+    },
+    {
+      "ID": 5,
+      "KepID": 5,
+      "AllatID": 5
+    },
+    {
+      "ID": 6,
+      "KepID": 6,
+      "AllatID": 6
+    },
+    {
+      "ID": 7,
+      "KepID": 7,
+      "AllatID": 7
+    },
+    {
+      "ID": 8,
+      "KepID": 8,
+      "AllatID": 8
+    },
+    {
+      "ID": 9,
+      "KepID": 9,
+      "AllatID": 9
+    },
+    {
+      "ID": 10,
+      "KepID": 10,
+      "AllatID": 10
+    },
+    {
+      "ID": 11,
+      "KepID": 11,
+      "AllatID": 11
+    },
+    {
+      "ID": 12,
+      "KepID": 12,
+      "AllatID": 12
+    },
+    {
+      "ID": 13,
+      "KepID": 13,
+      "AllatID": 13
+    },
+    {
+      "ID": 14,
+      "KepID": 14,
+      "AllatID": 14
+    },
+    {
+      "ID": 15,
+      "KepID": 15,
+      "AllatID": 15
+    },
+    {
+      "ID": 16,
+      "KepID": 16,
+      "AllatID": 16
+    },
+    {
+      "ID": 17,
+      "KepID": 17,
+      "AllatID": 17
+    },
+    {
+      "ID": 18,
+      "KepID": 18,
+      "AllatID": 18
+    },
+    {
+      "ID": 19,
+      "KepID": 19,
+      "AllatID": 19
+    },
+    {
+      "ID": 20,
+      "KepID": 20,
+      "AllatID": 20
+    }
+  ]
+}
