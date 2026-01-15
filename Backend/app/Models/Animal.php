@@ -19,7 +19,7 @@ class Animal extends Model
 
     public function imageanimal()
     {
-        return $this->belongsTo(imageanimal::class, 'AnimalID');
+        return $this->hasMany(imageanimal::class, 'AnimalID');
     }
 
     public function origin()
