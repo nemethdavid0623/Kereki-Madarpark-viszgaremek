@@ -10,6 +10,7 @@ class Animal extends Model
 
     protected $primaryKey = 'ID';
     protected $table = 'animal';
+    public $timestamps = false;
 
     public function species()
     {
