@@ -11,6 +11,6 @@ class Image extends Model
 
     public function imageanimal()
     {
-        return $this->belongsTo(imageanimal::class, 'ImageID');
+        return $this->hasMany(imageanimal::class, 'ImageID');
     }
 }

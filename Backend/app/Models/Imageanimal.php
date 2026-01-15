@@ -11,11 +11,11 @@ class Imageanimal extends Model
 
     public function animal()
     {
-        return $this->hasMany(animal::class, 'AnimalID');
+        return $this->belongsTo(animal::class, 'AnimalID');
     }
 
     public function image()
     {
-        return $this->hasMany(image::class, 'ImageID');
+        return $this->belongsTo(image::class, 'ImageID');
     }
 }
