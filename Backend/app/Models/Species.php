@@ -9,6 +9,7 @@ class Species extends Model
 {
     protected $primaryKey = 'ID';
     protected $table = 'species';
+    public $timestamps = false;
 
     public function animal()
     {

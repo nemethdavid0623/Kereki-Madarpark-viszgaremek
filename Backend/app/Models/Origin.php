@@ -9,6 +9,7 @@ class Origin extends Model
 
     protected $primaryKey = 'ID';
     protected $table = 'origin';
+    public $timestamps = false;
 
     public function animal()
     {

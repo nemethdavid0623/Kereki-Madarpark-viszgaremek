@@ -8,6 +8,7 @@ class Image extends Model
 {
     protected $primaryKey = 'ID';
     protected $table = 'image';
+    public $timestamps = false;
 
     public function imageanimal()
     {
