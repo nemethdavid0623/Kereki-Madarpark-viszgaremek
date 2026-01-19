@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Animal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\Mime\Message;
+
 class AnimalController extends Controller
 {
     /**
@@ -12,7 +14,6 @@ class AnimalController extends Controller
      */
     public function index()
     {
-
         $allData = Animal::with('image', 'origin', 'species')->get();
         return response()->json($allData);
     }
@@ -41,8 +42,6 @@ class AnimalController extends Controller
             'Habitat' => 'required|string',
             'Feeding' => 'required|string',
 
-
-
         ], [
             'SpeciesName.required' => 'Fajnév megadása kötelező',
             'SpeciesName.string' => 'Hibás formátum',
@@ -69,10 +68,9 @@ class AnimalController extends Controller
             'Feeding.required' => 'A táplálkozás megadása kötelező',
             'Feeding.string' => 'A táplálkozás formátuma hibás',
 
-
         ]);
         if ($validator->fails()) {
-            return response()->json(["success" => false, "message" => "Hiba a hozzáadaás során", $validator->errors()->toArray()], 400);
+            return response()->json(["success" => false, "message" => "Hiba a hozzáadaás során!", $validator->errors()->toArray()], 400);
         }
 
         $NewRecord = new Animal();
@@ -85,10 +83,9 @@ class AnimalController extends Controller
         $NewRecord->Habitat = $request->Habitat;
         $NewRecord->Feeding = $request->Feeding;
 
-
         $NewRecord->save();
 
-        return response()->json(["success" => true, "message:Record sikeresen hozzáadva"], 201);
+        return response()->json(["success" => true, "message" => "Record sikeresen hozzáadva!"], 201);
     }
 
     /**
@@ -118,8 +115,15 @@ class AnimalController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Animal $animal)
+    public function destroy(Animal $ID)
     {
-        //
+        $animal = Animal::find($ID);
+
+        if (!empty($animal)) {
+            $animal->delete();
+            return response()->json(["Message" => "Állat törölve!"], status: 202);
+        } else {
+            return response()->json(["Message" => "Állat nem található!"], 404);
+        }
     }
 }

@@ -29,24 +29,20 @@ class OriginController extends Controller
      */
     public function store(Request $request)
     {
-        $validator=Validator::make($request->all(), [
-        
-        'Name'=> 'required|string',
-        
+        $validator = Validator::make($request->all(), [
 
-
-
-       ],[
-        'Name.required'=> 'Fajnév megadása kötelező',
-        'Name.string'=> 'Hibás formátum'       
-       ]);
-       if ($validator->fails()) {
-        return response()->json(["success"=>false,"message"=>"Hiba a hozzáadaás során", $validator->errors()->toArray()],400);
-       }
-       $NewRecord=new Origin();
-       $NewRecord->Name=$request->Name;
-       $NewRecord->save();
-       return response()->json(["success"=>true,"message:Record sikeresen hozzáadva"],201) ;
+            'Name' => 'required|string',
+        ], [
+            'Name.required' => 'Származási hely megadása kötelező!',
+            'Name.string' => 'Hibás formátum!'
+        ]);
+        if ($validator->fails()) {
+            return response()->json(["success" => false, "message" => "Hiba a hozzáadaás során!", $validator->errors()->toArray()], 400);
+        }
+        $NewRecord = new Origin();
+        $NewRecord->Name = $request->Name;
+        $NewRecord->save();
+        return response()->json(["success" => true, "message" => "Record sikeresen hozzáadva!"], 201);
     }
 
     /**
@@ -76,8 +72,15 @@ class OriginController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Origin $origin)
+    public function destroy(Origin $ID)
     {
-        //
+        $origin = Origin::find($ID);
+
+        if (!empty($origin)) {
+            $origin->delete();
+            return response()->json(["Message" => "Származási hely törölve!"], status: 202);
+        } else {
+            return response()->json(["Message" => "Származási hely nem található!"], 404);
+        }
     }
 }
