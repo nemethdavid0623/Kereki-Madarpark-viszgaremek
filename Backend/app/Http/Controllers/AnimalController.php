@@ -13,7 +13,7 @@ class AnimalController extends Controller
     public function index()
     {
 
-        $allData = Animal::with( 'imageanimal', 'origin', 'species')->get();
+        $allData = Animal::with('image', 'origin', 'species')->get();
         return response()->json($allData);
     }
 
@@ -30,65 +30,65 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
-         $validator=Validator::make($request->all(), [
-        
-        'SpeciesName'=> 'required|string',
-        'Quantity'=> 'required|numeric',
-        'ForSaleQuantity'=> 'required|numeric|min:0',
-        'Description'=>'required|string',
-        'SpeciesID'=>'required|numeric',
-        'OriginID'=>'required|numeric',
-        'Habitat'=>'required|string',
-        'Feeding'=>'required|string',
+        $validator = Validator::make($request->all(), [
+
+            'SpeciesName' => 'required|string',
+            'Quantity' => 'required|numeric',
+            'ForSaleQuantity' => 'required|numeric|min:0',
+            'Description' => 'required|string',
+            'SpeciesID' => 'required|numeric',
+            'OriginID' => 'required|numeric',
+            'Habitat' => 'required|string',
+            'Feeding' => 'required|string',
 
 
 
-       ],[
-        'SpeciesName.required'=> 'Fajnév megadása kötelező',
-        'SpeciesName.string'=> 'Hibás formátum',
+        ], [
+            'SpeciesName.required' => 'Fajnév megadása kötelező',
+            'SpeciesName.string' => 'Hibás formátum',
 
-        'Quantity.required' => 'A mennyiség megadása kötelező',
-        'Quantity.numeric'  => 'A mennyiség csak szám lehet',
+            'Quantity.required' => 'A mennyiség megadása kötelező',
+            'Quantity.numeric' => 'A mennyiség csak szám lehet',
 
-        'ForSaleQuantity.required' => 'Az eladásra szánt mennyiség megadása kötelező',
-        'ForSaleQuantity.numeric'  => 'Az eladásra szánt mennyiség csak szám lehet',
-        'ForSaleQuantity.min'      => 'Az eladásra szánt mennyiség nem lehet negatív',
+            'ForSaleQuantity.required' => 'Az eladásra szánt mennyiség megadása kötelező',
+            'ForSaleQuantity.numeric' => 'Az eladásra szánt mennyiség csak szám lehet',
+            'ForSaleQuantity.min' => 'Az eladásra szánt mennyiség nem lehet negatív',
 
-        'Description.required' => 'A leírás megadása kötelező',
-        'Description.string'   => 'A leírás formátuma hibás',
+            'Description.required' => 'A leírás megadása kötelező',
+            'Description.string' => 'A leírás formátuma hibás',
 
-        'SpeciesID.required' => 'A faj azonosító megadása kötelező',
-        'SpeciesID.numeric'  => 'A faj azonosító csak szám lehet',
+            'SpeciesID.required' => 'A faj azonosító megadása kötelező',
+            'SpeciesID.numeric' => 'A faj azonosító csak szám lehet',
 
-        'OriginID.required' => 'A származás megadása kötelező',
-        'OriginID.numeric'  => 'A származás azonosító csak szám lehet',
+            'OriginID.required' => 'A származás megadása kötelező',
+            'OriginID.numeric' => 'A származás azonosító csak szám lehet',
 
-        'Habitat.required' => 'Az élőhely megadása kötelező',
-        'Habitat.string'   => 'Az élőhely formátuma hibás',
+            'Habitat.required' => 'Az élőhely megadása kötelező',
+            'Habitat.string' => 'Az élőhely formátuma hibás',
 
-        'Feeding.required' => 'A táplálkozás megadása kötelező',
-        'Feeding.string'   => 'A táplálkozás formátuma hibás',
+            'Feeding.required' => 'A táplálkozás megadása kötelező',
+            'Feeding.string' => 'A táplálkozás formátuma hibás',
 
-        
-       ]);
-       if ($validator->fails()) {
-        return response()->json(["success"=>false,"message"=>"Hiba a hozzáadaás során", $validator->errors()->toArray()],400);
-       }
 
-       $NewRecord=new Animal();
-       $NewRecord->SpeciesName=$request->SpeciesName;
-       $NewRecord->Quantity=$request->Quantity;
-       $NewRecord->ForSaleQuantity=$request->ForSaleQuantity;
-       $NewRecord->Description=$request->Description;
-       $NewRecord->SpeciesID=$request->SpeciesID;
-       $NewRecord->OriginID=$request->OriginID;
-       $NewRecord->Habitat=$request->Habitat;
-       $NewRecord->Feeding=$request->Feeding;
-      
-       
-       $NewRecord->save();
+        ]);
+        if ($validator->fails()) {
+            return response()->json(["success" => false, "message" => "Hiba a hozzáadaás során", $validator->errors()->toArray()], 400);
+        }
 
-       return response()->json(["success"=>true,"message:Record sikeresen hozzáadva"],201) ;
+        $NewRecord = new Animal();
+        $NewRecord->SpeciesName = $request->SpeciesName;
+        $NewRecord->Quantity = $request->Quantity;
+        $NewRecord->ForSaleQuantity = $request->ForSaleQuantity;
+        $NewRecord->Description = $request->Description;
+        $NewRecord->SpeciesID = $request->SpeciesID;
+        $NewRecord->OriginID = $request->OriginID;
+        $NewRecord->Habitat = $request->Habitat;
+        $NewRecord->Feeding = $request->Feeding;
+
+
+        $NewRecord->save();
+
+        return response()->json(["success" => true, "message:Record sikeresen hozzáadva"], 201);
     }
 
     /**

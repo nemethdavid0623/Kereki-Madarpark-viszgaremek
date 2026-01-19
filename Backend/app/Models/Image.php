@@ -10,8 +10,8 @@ class Image extends Model
     protected $table = 'image';
     public $timestamps = false;
 
-    public function imageanimal()
+    public function animal()
     {
-        return $this->hasMany(imageanimal::class, 'ImageID');
+        return $this->hasMany(animal::class, 'ImageID');
     }
 }
