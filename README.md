@@ -11,4 +11,4 @@ Weboldal minta (Figma):
 https://www.figma.com/design/XayV4La3uOiRMEEtDg9N5X/Madarpark?node-id=0-1&p=f&t=qHE3uU5IY2q9QqWT-0
 
 Adatbázis terv (DrawIO):
-https://app.diagrams.net/?src=about
+https://app.diagrams.net/#G1v6Dh7N21I1KexuWwJ9ne9QlqKZN4AyK3#%7B%22pageId%22%3A%22k29NE50U8itfYlfEIpKD%22%7D
