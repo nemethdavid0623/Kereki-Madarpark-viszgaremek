@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Jan 04. 17:28
+-- Létrehozás ideje: 2026. Jan 18. 20:48
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -98,38 +98,18 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `image` (
   `ID` int(11) NOT NULL,
-  `ImageData` longblob NOT NULL
+  `ImageData` varchar(255) DEFAULT NULL,
+  `AnimalID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- A tábla adatainak kiíratása `image`
 --
 
-INSERT INTO `image` (`ID`, `ImageData`) VALUES
-(1, 0x00),
-(2, 0x00),
-(3, 0x00);
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `imageanimal`
---
-
-CREATE TABLE `imageanimal` (
-  `ID` int(11) NOT NULL,
-  `ImageID` int(11) NOT NULL,
-  `AnimalID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- A tábla adatainak kiíratása `imageanimal`
---
-
-INSERT INTO `imageanimal` (`ID`, `ImageID`, `AnimalID`) VALUES
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 3);
+INSERT INTO `image` (`ID`, `ImageData`, `AnimalID`) VALUES
+(1, '�tesztkep1.png', 1),
+(2, '�tesztkep2.png', 2),
+(3, '�tesztkep3.png', 2);
 
 -- --------------------------------------------------------
 
@@ -339,15 +319,8 @@ ALTER TABLE `failed_jobs`
 -- A tábla indexei `image`
 --
 ALTER TABLE `image`
-  ADD PRIMARY KEY (`ID`);
-
---
--- A tábla indexei `imageanimal`
---
-ALTER TABLE `imageanimal`
   ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `ImageID` (`ImageID`,`AnimalID`),
-  ADD KEY `fk_imageanimal_animal` (`AnimalID`);
+  ADD KEY `fk_animal` (`AnimalID`);
 
 --
 -- A tábla indexei `jobs`
@@ -439,12 +412,6 @@ ALTER TABLE `image`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT a táblához `imageanimal`
---
-ALTER TABLE `imageanimal`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT a táblához `jobs`
 --
 ALTER TABLE `jobs`
@@ -498,11 +465,10 @@ ALTER TABLE `animal`
   ADD CONSTRAINT `fk_animal_origin` FOREIGN KEY (`OriginID`) REFERENCES `origin` (`ID`);
 
 --
--- Megkötések a táblához `imageanimal`
+-- Megkötések a táblához `image`
 --
-ALTER TABLE `imageanimal`
-  ADD CONSTRAINT `fk_imageanimal_animal` FOREIGN KEY (`AnimalID`) REFERENCES `animal` (`ID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_imageanimal_image` FOREIGN KEY (`ImageID`) REFERENCES `image` (`ID`) ON DELETE CASCADE;
+ALTER TABLE `image`
+  ADD CONSTRAINT `fk_animal` FOREIGN KEY (`AnimalID`) REFERENCES `animal` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
