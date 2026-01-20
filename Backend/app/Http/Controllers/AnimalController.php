@@ -115,15 +115,14 @@ class AnimalController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Animal $ID)
+    public function destroy($id)
     {
-        $animal = Animal::find($ID);
+        $animal = Animal::find($id);
 
         if (!empty($animal)) {
             $animal->delete();
             return response()->json(["Message" => "Állat törölve!"], status: 202);
-        } 
-        else {
+        } else {
             return response()->json(["Message" => "Állat nem található!"], 404);
         }
     }
