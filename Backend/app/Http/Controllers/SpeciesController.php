@@ -29,19 +29,7 @@ class SpeciesController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'Name' => 'required|string',
-        ], [
-            'Name.required' => 'Fajnév megadása kötelező!',
-            'Name.string' => 'Hibás formátum!'
-        ]);
-        if ($validator->fails()) {
-            return response()->json(["success" => false, "message" => "Hiba a hozzáadaás során!", $validator->errors()->toArray()], 400);
-        }
-        $NewRecord = new Species();
-        $NewRecord->Name = $request->Name;
-        $NewRecord->save();
-        return response()->json(["success" => true, "message" => "Record sikeresen hozzáadva!"], 201);
+
     }
 
     /**
@@ -73,13 +61,6 @@ class SpeciesController extends Controller
      */
     public function destroy(Species $ID)
     {
-        $species = Species::find($ID);
-
-        if (!empty($species)) {
-            $species->delete();
-            return response()->json(["Message" => "Fajta törölve!"], status: 202);
-        } else {
-            return response()->json(["Message" => "Fajta nem található!"], 404);
-        }
+        
     }
 }

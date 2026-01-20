@@ -74,13 +74,5 @@ class OriginController extends Controller
      */
     public function destroy(Origin $ID)
     {
-        $origin = Origin::find($ID);
-
-        if (!empty($origin)) {
-            $origin->delete();
-            return response()->json(["Message" => "Származási hely törölve!"], status: 202);
-        } else {
-            return response()->json(["Message" => "Származási hely nem található!"], 404);
-        }
     }
 }

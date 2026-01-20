@@ -122,7 +122,8 @@ class AnimalController extends Controller
         if (!empty($animal)) {
             $animal->delete();
             return response()->json(["Message" => "Állat törölve!"], status: 202);
-        } else {
+        } 
+        else {
             return response()->json(["Message" => "Állat nem található!"], 404);
         }
     }

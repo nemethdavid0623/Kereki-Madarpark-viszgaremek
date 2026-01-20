@@ -8,3 +8,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/AllData', [AnimalController::class, "index"]);
 Route::post('/NewAnimal', [AnimalController::class, "store"]);
 Route::post('/NewOrigin', [OriginController::class, "store"]);
+Route::delete('/DeleteAnimal',[AnimalController::class, "destroy"]);
