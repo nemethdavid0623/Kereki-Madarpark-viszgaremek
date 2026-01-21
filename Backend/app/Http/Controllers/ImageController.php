@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ImageController extends Controller
 {
@@ -28,7 +29,20 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+
+            'ImageData' => 'required|string',
+        ], [
+            'ImageData.required' => 'Kép megadása kötelező!',
+            'ImageData.string' => 'Hibás formátum!'
+        ]);
+        if ($validator->fails()) {
+            return response()->json(["success" => false, "message" => "Hiba a hozzáadaás során!", $validator->errors()->toArray()], 400);
+        }
+        $NewRecord = new Image();
+        $NewRecord->ImageData = $request->ImageData;
+        $NewRecord->save();
+        return response()->json(["success" => true, "message" => "Record sikeresen hozzáadva!"], 201);
     }
 
     /**

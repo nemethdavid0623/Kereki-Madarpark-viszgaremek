@@ -18,6 +18,20 @@ class AnimalController extends Controller
         return response()->json($allData);
     }
 
+    public function forSale()
+    {
+        $forSale = Animal::with(['image', 'origin', 'species'])->where('ForSaleQuantity', '>', 0)->get();
+
+        return response()->json($forSale);;
+    }
+
+    public function parkQuantity()
+    {
+        $quantity = Animal::with(['image', 'origin', 'species'])->where('Quantity', '>', 0)->get();
+
+        return response()->json($quantity);;
+    }
+
     /**
      * Show the form for creating a new resource.
      */
