@@ -11,6 +11,16 @@ class Animal extends Model
     protected $primaryKey = 'ID';
     protected $table = 'animal';
     public $timestamps = false;
+    protected $fillable = [
+        'SpeciesName',
+        'Quantity',
+        'ForSaleQuantity',
+        'Description',
+        'SpeciesID',
+        'OriginID',
+        'Habitat',
+        'Feeding'
+    ];
 
     public function species()
     {

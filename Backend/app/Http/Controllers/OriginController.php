@@ -42,7 +42,7 @@ class OriginController extends Controller
         $NewRecord = new Origin();
         $NewRecord->Name = $request->Name;
         $NewRecord->save();
-        return response()->json(["success" => true, "message" => "Record sikeresen hozzáadva!"], 201);
+        return response()->json(["success" => true, "data" => $NewRecord], 201);
     }
 
     /**
