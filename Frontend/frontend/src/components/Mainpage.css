@@ -86,3 +86,50 @@
     padding: 10px 0;
     font-style: italic;
 }
+
+img{
+    width: 90%;
+    max-width: 900px;
+    text-align: center;
+    border: 2px solid #1a1a1a;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none; /* Leveszi a pöttyöket */
+  margin: 0;
+  padding: 0;
+  gap: 25px; /* Távolság a menüpontok között */
+  justify-content: center; /* Vízszintes középre igazítás */
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none; /* Leveszi az aláhúzást */
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+
+.nav-links a:hover {
+  color: #2d5a27; /* Hover szín */
+}
+
+.logo {
+  height: 75px;    /* Állítsd be a kívánt magasságot pixelben */
+  width: auto;      /* Megtartja az eredeti arányokat */
+  display: block;   /* Eltünteti az esetleges alsó hézagot */
+  border: 0px;
+  
+}
