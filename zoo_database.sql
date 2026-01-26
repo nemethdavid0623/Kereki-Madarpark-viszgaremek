@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Jan 20. 14:24
+-- Létrehozás ideje: 2026. Jan 26. 12:18
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -34,9 +34,9 @@ CREATE TABLE `animal` (
   `SpeciesName` varchar(150) NOT NULL,
   `Quantity` int(11) NOT NULL,
   `ForSaleQuantity` int(11) NOT NULL,
+  `Origin` text NOT NULL,
   `Description` text DEFAULT NULL,
   `SpeciesID` int(11) NOT NULL,
-  `OriginID` int(11) NOT NULL,
   `Habitat` text DEFAULT NULL,
   `Feeding` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -45,9 +45,9 @@ CREATE TABLE `animal` (
 -- A tábla adatainak kiíratása `animal`
 --
 
-INSERT INTO `animal` (`ID`, `SpeciesName`, `Quantity`, `ForSaleQuantity`, `Description`, `SpeciesID`, `OriginID`, `Habitat`, `Feeding`) VALUES
-(2, 'European Hamster', 6, 1, 'Small nocturnal rodent', 2, 1, 'Grasslands', 'Grains and vegetables'),
-(3, 'Guinea Pig', 10, 3, 'Domesticated small mammal', 2, 3, 'Enclosure', 'Hay and vegetables');
+INSERT INTO `animal` (`ID`, `SpeciesName`, `Quantity`, `ForSaleQuantity`, `Origin`, `Description`, `SpeciesID`, `Habitat`, `Feeding`) VALUES
+(2, 'European Hamster', 0, 1, 'Közép-Európa', 'Small nocturnal rodent', 2, 'Grasslands', 'Grains and vegetables'),
+(3, 'Guinea Pig', 10, 0, 'Ázsia keleti partvidéke', 'Domesticated small mammal', 2, 'Enclosure', 'Hay and vegetables');
 
 -- --------------------------------------------------------
 
@@ -183,26 +183,6 @@ CREATE TABLE `openinghours` (
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `origin`
---
-
-CREATE TABLE `origin` (
-  `ID` int(11) NOT NULL,
-  `Name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- A tábla adatainak kiíratása `origin`
---
-
-INSERT INTO `origin` (`ID`, `Name`) VALUES
-(1, 'Europe'),
-(2, 'Asia'),
-(3, 'South America');
-
--- --------------------------------------------------------
-
---
 -- Tábla szerkezet ehhez a táblához `password_reset_tokens`
 --
 
@@ -236,7 +216,8 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
-(1, 'App\\Models\\User', 3, 'api-token', 'deaed03a003c41f2f16f9c63ea5f0284598193b49c2e82c8760a4994b6aca4bd', '[\"*\"]', NULL, NULL, '2026-01-20 12:06:48', '2026-01-20 12:06:48');
+(1, 'App\\Models\\User', 3, 'api-token', 'deaed03a003c41f2f16f9c63ea5f0284598193b49c2e82c8760a4994b6aca4bd', '[\"*\"]', NULL, NULL, '2026-01-20 12:06:48', '2026-01-20 12:06:48'),
+(3, 'App\\Models\\User', 3, 'api-token', '160196bd5078e6b651a1740684f0cc846c03b299702708bc7ddb0733d351d814', '[\"*\"]', NULL, NULL, '2026-01-21 08:57:24', '2026-01-21 08:57:24');
 
 -- --------------------------------------------------------
 
@@ -305,8 +286,7 @@ INSERT INTO `users` (`id`, `username`, `email`, `email_verified_at`, `password`,
 --
 ALTER TABLE `animal`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_animal_class` (`SpeciesID`),
-  ADD KEY `fk_animal_origin` (`OriginID`);
+  ADD KEY `fk_animal_class` (`SpeciesID`);
 
 --
 -- A tábla indexei `cache`
@@ -357,12 +337,6 @@ ALTER TABLE `migrations`
 -- A tábla indexei `openinghours`
 --
 ALTER TABLE `openinghours`
-  ADD PRIMARY KEY (`ID`);
-
---
--- A tábla indexei `origin`
---
-ALTER TABLE `origin`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -443,16 +417,10 @@ ALTER TABLE `openinghours`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `origin`
---
-ALTER TABLE `origin`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT a táblához `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT a táblához `species`
@@ -474,8 +442,7 @@ ALTER TABLE `users`
 -- Megkötések a táblához `animal`
 --
 ALTER TABLE `animal`
-  ADD CONSTRAINT `fk_animal_class` FOREIGN KEY (`SpeciesID`) REFERENCES `species` (`ID`),
-  ADD CONSTRAINT `fk_animal_origin` FOREIGN KEY (`OriginID`) REFERENCES `origin` (`ID`);
+  ADD CONSTRAINT `fk_animal_class` FOREIGN KEY (`SpeciesID`) REFERENCES `species` (`ID`);
 
 --
 -- Megkötések a táblához `image`
