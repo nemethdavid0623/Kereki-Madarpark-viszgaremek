@@ -14,20 +14,20 @@ class AnimalController extends Controller
      */
     public function index()
     {
-        $allData = Animal::with('image', 'origin', 'species')->get();
+        $allData = Animal::with('image', 'species')->get();
         return response()->json($allData);
     }
 
     public function forSale()
     {
-        $forSale = Animal::with(['image', 'origin', 'species'])->where('ForSaleQuantity', '>', 0)->get();
+        $forSale = Animal::with(['image','species'])->where('ForSaleQuantity', '>', 0)->get();
 
         return response()->json($forSale);;
     }
 
     public function parkQuantity()
     {
-        $quantity = Animal::with(['image', 'origin', 'species'])->where('Quantity', '>', 0)->get();
+        $quantity = Animal::with(['image',  'species'])->where('Quantity', '>', 0)->get();
 
         return response()->json($quantity);;
     }
@@ -52,7 +52,7 @@ class AnimalController extends Controller
             'ForSaleQuantity' => 'required|numeric|min:0',
             'Description' => 'required|string',
             'SpeciesID' => 'required|numeric',
-            'OriginID' => 'required|numeric',
+            'Origin' => 'required|string',
             'Habitat' => 'required|string',
             'Feeding' => 'required|string',
 
@@ -74,7 +74,7 @@ class AnimalController extends Controller
             'SpeciesID.numeric' => 'A faj azonosító csak szám lehet',
 
             'OriginID.required' => 'A származás megadása kötelező',
-            'OriginID.numeric' => 'A származás azonosító csak szám lehet',
+            'OriginID.string' => 'A származás azonosító csak szöveg lehet',
 
             'Habitat.required' => 'Az élőhely megadása kötelező',
             'Habitat.string' => 'Az élőhely formátuma hibás',
@@ -93,7 +93,7 @@ class AnimalController extends Controller
         $NewRecord->ForSaleQuantity = $request->ForSaleQuantity;
         $NewRecord->Description = $request->Description;
         $NewRecord->SpeciesID = $request->SpeciesID;
-        $NewRecord->OriginID = $request->OriginID;
+        $NewRecord->Origin = $request->Origin;
         $NewRecord->Habitat = $request->Habitat;
         $NewRecord->Feeding = $request->Feeding;
 
