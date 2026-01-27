@@ -1,0 +1,99 @@
+.birds-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Kereső sáv - Szélesség igazítva a NavBar-hoz */
+.birds-search-bar {
+    background-color: #4a773c; 
+    width: 90%;
+    max-width: 900px; /* Pontosan annyi, mint a nav-nál */
+    text-align: center;
+    border: 2px solid #1a1a1a;
+    margin-top: 15px; /* Távolság a nav-tól */
+    margin-bottom: 15px;
+    border-radius: 4px;
+    padding: 15px;
+    font-family: 'Joti One', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    box-sizing: border-box; /* Fontos, hogy a padding ne növelje a szélességet */
+}
+
+.birds-search-bar input {
+    border-radius: 20px;
+    border: 2px solid #1a1a1a;
+    padding: 5px 15px;
+    width: 40%; /* Visszavettem kicsit a szélességéből */
+    outline: none;
+}
+
+/* Rövid leírás doboz - Szélesség igazítva */
+.birds-desc-box {
+    background-color: #4a773c; 
+    width: 90%;
+    max-width: 900px;
+    text-align: center;
+    border: 2px solid #1a1a1a;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    padding: 40px 0; /* Megnövelt padding a főoldali stílushoz */
+    font-family: 'Joti One', serif;
+    font-size: 1.8rem;
+    font-style: italic;
+    box-sizing: border-box;
+}
+
+/* Galéria rács - Szélesség és igazítás */
+.birds-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; /* Távolság a kártyák között */
+    width: 90%;
+    max-width: 900px;
+    margin-bottom: 40px;
+}
+
+/* Egyedi kártya stílus */
+.bird-card {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #1a1a1a;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #4a773c; /* Az alap is legyen zöld */
+}
+
+.bird-img-placeholder {
+    background-color: #d1d1d1;
+    height: 220px; /* Kicsit magasabb, hogy hangsúlyosabb legyen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 1.8rem;
+    font-style: italic;
+    font-weight: bold;
+    border-bottom: 2px solid #1a1a1a;
+}
+
+.bird-label {
+    padding: 15px 5px;
+    text-align: center;
+    font-family: 'Joti One', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: white;
+}
+
+/* Mobilos nézetnél maradjon középen és legyen szélesebb */
+@media (max-width: 768px) {
+    .birds-grid {
+        grid-template-columns: 1fr;
+        width: 90%;
+    }
+}
