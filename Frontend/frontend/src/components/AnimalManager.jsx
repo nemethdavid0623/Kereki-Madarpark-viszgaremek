@@ -7,7 +7,7 @@ const AnimalManager = () => {
     const [formData, setFormData] = useState({
         SpeciesName: '', 
         Quantity: '', 
-        ForSaleQuantity: '0', // Alapérték
+        ForSaleQuantity: '0', 
         Description: '', 
         SpeciesID: '1', 
         Habitat: '',
@@ -16,7 +16,6 @@ const AnimalManager = () => {
     });
 
     const token = localStorage.getItem('token');
-    // Alap URL definiálása a könnyebb íráshoz
     const API_BASE = "http://localhost:8000/api";
 
     const handleSubmit = async (e) => {
@@ -34,12 +33,9 @@ const AnimalManager = () => {
         };
 
         try {
-            // 1. LÉPÉS: Származás mentése
             const originRes = await axios.post(`${API_BASE}/NewOrigin`, { Name: formData.OriginName }, config);
-            // Itt a data.data.ID-t (vagy id-t) használd, ahogy a Laravel visszaküldi
             const originId = originRes.data.data.ID || originRes.data.data.id;
 
-            // 2. LÉPÉS: Állat mentése
             const animalData = {
                 ...formData,
                 OriginID: originId
@@ -47,7 +43,6 @@ const AnimalManager = () => {
             const animalRes = await axios.post(`${API_BASE}/NewAnimal`, animalData, config);
             const animalId = animalRes.data.data.ID || animalRes.data.data.id;
 
-            // 3. LÉPÉS: Kép mentése
             if (file) {
                 const imgData = new FormData();
                 imgData.append('ImageFile', file);
@@ -63,14 +58,13 @@ const AnimalManager = () => {
 
             alert("Minden sikeresen elmentve!");
             
-            // Opcionális: Form kiürítése siker után
             setFormData({
                 SpeciesName: '', Quantity: '', ForSaleQuantity: '0',
                 Description: '', SpeciesID: '1', Habitat: '',
                 Feeding: '', OriginName: ''
             });
             setFile(null);
-            e.target.reset(); // Inputok vizuális ürítése
+            e.target.reset(); 
 
         } catch (error) {
             console.error("Hiba részletei:", error.response?.data);
