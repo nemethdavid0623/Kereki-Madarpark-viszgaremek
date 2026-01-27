@@ -1,25 +1,14 @@
-/* Ezt az App.css vagy a MainPage.css legtetejére tedd */
-html, body, #root {
+html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
-    background-color: #333333; /* Hogy ne villanjon fehér a széleken */
-}
-
-body {
-    display: flex;
-    justify-content: center; /* Vízszintes középre igazítás a legfelső szinten */
+    background-color: #333333;
 }
 
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-
-body{
-  background-color: rgb(59,59,59);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Ez kényszeríti középre a main-wrappert */
 }
