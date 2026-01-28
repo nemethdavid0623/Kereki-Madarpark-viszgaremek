@@ -1,9 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './MainPage.css';
 
 const MainPage = () => {
   return (
+
+    
+
+
     <div className="main-page-content">
+
+      <nav className="header-banner-nav">
+          <ul className="nav-links">
+            <Link to="http://localhost:5173/"><img src="/logo.png" alt="" className='logo'/></Link>
+            <li><a href="#">Tartási<br/>tanácsok</a></li>
+            <li><Link to="http://localhost:5173/Animals">Állataink</Link></li>
+            <li><a href="#">Eladó <br/>példányaink</a></li>
+            <li><a href="#">Rólunk</a></li>
+            <li><a href="#">Admin</a></li>
+          </ul>
+        </nav>
+
       <div className="header-banner">
         <h2>Üdvözlünk a Balatoni Madárkertben!</h2>
       </div>

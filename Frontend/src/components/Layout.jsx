@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import './MainPage.css';
 
-function Layout() {
+const Layout=({children})=> {
   return (
     <div className="main-wrapper">
         <img src="/madarpark_header.png" alt="Balatoni Madárkert" className='header-img'/>
@@ -11,14 +11,14 @@ function Layout() {
           <ul className="nav-links">
             <Link to="http://localhost:5173/"><img src="/logo.png" alt="" className='logo'/></Link>
             <li><a href="#">Tartási<br/>tanácsok</a></li>
-            <li><Link to="/allataink">Állataink</Link></li>
+            <li><Link to="http://localhost:5173/Animals">Állataink</Link></li>
             <li><a href="#">Eladó <br/>példányaink</a></li>
             <li><a href="#">Rólunk</a></li>
             <li><a href="#">Admin</a></li>
           </ul>
         </nav>
      
-        <Outlet />
+        <main>{children}</main>
     
         <footer className="footer">footer</footer>
     </div>
