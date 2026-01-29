@@ -4,7 +4,7 @@
     flex-direction: column;
 }
 
-/* Kereső */
+
 .birds-search-bar {
     background-color: #4a773c;
     border: 2px solid #1a1a1a;
@@ -26,7 +26,6 @@
     border-radius: 4px;
 }
 
-/* Kártya rács - Fix 3 oszlop */
 .birds-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

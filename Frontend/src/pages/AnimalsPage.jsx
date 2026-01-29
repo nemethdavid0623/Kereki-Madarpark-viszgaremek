@@ -21,16 +21,15 @@ function AnimalsPage() {
       <div className="birds-page-wrapper">
         <div className="birds-search-bar">
           <span>Kereső:</span>
-          <input type="text" placeholder="Keress..." />
+          <input type="text" placeholder="Keress..."/>
         </div>
 
-        {/* Ez a div fogja össze a kártyákat a rácsba */}
+
         <div className="birds-grid">
           {data.map((row) => (
             <Animals
               key={row.ID}
               SpeciesName={row.SpeciesName}
-              // Itt átadhatsz képet is, ha jön a backendről: image={row.ImagePath}
             />
           ))}
         </div>
