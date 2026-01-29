@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './MainPage.css';
 
 const Layout=({children})=> {
@@ -12,7 +12,7 @@ const Layout=({children})=> {
             <Link to="http://localhost:5173/"><img src="/logo.png" alt="" className='logo'/></Link>
             <li><a href="#">Tartási<br/>tanácsok</a></li>
             <li><Link to="http://localhost:5173/Animals">Állataink</Link></li>
-            <li><a href="#">Eladó <br/>példányaink</a></li>
+            <li><a href="#">Eladó<br/>példányaink</a></li>
             <li><a href="#">Rólunk</a></li>
             <li><a href="#">Admin</a></li>
           </ul>

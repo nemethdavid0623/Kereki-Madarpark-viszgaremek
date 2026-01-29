@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
 import MainPage from './components/MainPage';
 import AnimalManager from './components/AnimalManager';
 import AnimalsPage from './pages/AnimalsPage';
@@ -9,7 +8,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<MainPage/>}/>
-        
         <Route path="/AnimalInput" element={<AnimalManager/>}/>
         <Route path="/Animals" element={<AnimalsPage/>}/>
       </Routes>

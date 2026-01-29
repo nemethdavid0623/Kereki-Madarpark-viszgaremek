@@ -13,17 +13,28 @@ function AnimalsPage() {
   }, []);
 
   if (data === null) {
-    return <div>Loading...</div>;
+    return <Layout><div>Loading...</div></Layout>;
   }
 
   return (
     <Layout>
-      {data.map((row) =>
-        <Animals
-            key={row.ID}
-            SpeciesName={row.SpeciesName}
-          />
-      )}
+      <div className="birds-page-wrapper">
+        <div className="birds-search-bar">
+          <span>Kereső:</span>
+          <input type="text" placeholder="Keress..." />
+        </div>
+
+        {/* Ez a div fogja össze a kártyákat a rácsba */}
+        <div className="birds-grid">
+          {data.map((row) => (
+            <Animals
+              key={row.ID}
+              SpeciesName={row.SpeciesName}
+              // Itt átadhatsz képet is, ha jön a backendről: image={row.ImagePath}
+            />
+          ))}
+        </div>
+      </div>
     </Layout>
   );
 }

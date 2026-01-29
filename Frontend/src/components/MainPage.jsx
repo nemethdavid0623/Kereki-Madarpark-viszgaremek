@@ -4,11 +4,8 @@ import './MainPage.css';
 
 const MainPage = () => {
   return (
-
-    
-
-
     <div className="main-page-content">
+      <img src="/madarpark_header.png" alt="Balatoni Madárkert" className='header-img'/>
 
       <nav className="header-banner-nav">
           <ul className="nav-links">

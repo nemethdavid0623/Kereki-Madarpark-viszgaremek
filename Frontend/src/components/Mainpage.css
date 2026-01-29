@@ -1,31 +1,51 @@
+/* ALAPBEÁLLÍTÁSOK */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #333333; /* Sötétszürke háttér a mintád alapján */
+    display: flex;
+    justify-content: center;
+}
+
+#root {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* FŐ KONTÉNER - Ez tartja középen a 900px széles tartalmat */
 .main-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 900px; /* Fix szélesség a minta alapján */
+    width: 900px; 
     padding: 20px 0;
     font-family: 'Joti One', serif;
+    box-sizing: border-box;
 }
 
-/* Kerekítés és szegély minden dobozra */
+/* Kerekítés és szegély minden dobozra a minta szerint */
 .header-img, .header-banner-nav, .header-banner, 
 .description-banner, .content-row div, .footer,
 .birds-search-bar, .bird-card {
     border: 3px solid #1a1a1a;
-    border-radius: 20px; /* Erősebb kerekítés a mintához */
+    border-radius: 20px;
+    box-sizing: border-box; /* Fontos, hogy a border ne növelje a szélességet */
 }
 
 .header-img {
     width: 100%;
     height: auto;
     margin-bottom: 30px;
+    display: block;
 }
 
-/* NAVIGÁCIÓ - Nagyobb szövegekkel */
+/* NAVIGÁCIÓ */
 .header-banner-nav {
     background-color: #4a773c;
     width: 100%;
-    padding: 15px 20px;
+    padding: 10px 20px;
     margin-bottom: 35px;
 }
 
@@ -35,6 +55,7 @@
     align-items: center;
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .logo {
@@ -45,33 +66,36 @@
 .nav-links a {
     text-decoration: none;
     color: white;
-    font-size: 1.1rem; /* Megnövelt betűméret */
+    font-size: 1.1rem;
     font-weight: bold;
-    white-space: nowrap; /* Ne törje törd össze a szavakat */
+    text-align: center;
 }
 
-/* FŐOLDAL TARTALOM */
+/* FŐOLDAL TARTALOM (Cikk-cakk elrendezés) */
 .main-page-content {
     display: flex;
     flex-direction: column;
-    gap: 35px; /* Nagyobb hézag a blokkok között */
+    gap: 20px;
     width: 100%;
 }
 
 .content-row {
     display: flex;
-    height: 320px;
-    gap: 25px; /* HÉZAG A KÉP ÉS A SZÖVEG KÖZÖTT */
-    border: none !important; /* Levesszük a külső keretet, mert a belsőknek van */
+    height: 250px;
+    gap: 10px;
+    width: 100%;
+    border: none !important; /* A soroknak maguknak nincs kerete */
 }
 
-.content-row.reverse { flex-direction: row-reverse; }
+.content-row.reverse { 
+    flex-direction: row-reverse; 
+}
 
 .image-placeholder, .text-placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.2rem;
+    font-size: 1.5rem;
     color: white;
 }
 
@@ -86,25 +110,30 @@
     background-color: #4a773c;
 }
 
-/* BANNER SZÖVEGEK */
+/* BANNEREK (Zöld sávok) */
 .header-banner, .description-banner {
     background-color: #4a773c;
     color: white;
     text-align: center;
     padding: 20px;
+    width: 100%;
 }
 
 .description-banner {
-    padding: 60px 20px;
-    font-size: 2.5rem;
+    padding: 30px 20px;
+    font-size: 1.5rem;
     font-style: italic;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
-/* ÁLLATAINK (BIRDS) RÁCS */
+/* ÁLLATAINK (BIRDS) RÁCS ELRENDEZÉS */
+.birds-page-wrapper {
+    width: 100%;
+}
+
 .birds-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* Fix 3 oszlop a minta alapján */
     gap: 30px;
     width: 100%;
     margin-top: 20px;
@@ -115,23 +144,50 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    cursor: pointer; /* Jelezzük, hogy kattintható */
+    transition: transform 0.2s;
+}
+
+.bird-card:hover {
+    transform: scale(1.02); /* Kicsi nagyítás hoverre */
 }
 
 .bird-img-placeholder {
     background-color: #d1d1d1;
-    height: 250px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-bottom: 3px solid #1a1a1a;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    color: #333;
 }
 
 .bird-label {
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     color: white;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+}
+
+/* KERESŐ SÁV */
+.birds-search-bar {
+    background-color: #4a773c;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    color: white;
+}
+
+.birds-search-bar input {
+    border: 2px solid #1a1a1a;
+    padding: 8px;
+    width: 300px;
+    border-radius: 10px;
 }
 
 /* FOOTER */

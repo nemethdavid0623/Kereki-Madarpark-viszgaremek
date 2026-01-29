@@ -3,12 +3,29 @@ html, body {
     padding: 0;
     width: 100%;
     background-color: #333333;
+    overflow-x: hidden;
 }
 
 #root {
-    width: 100%;
-    margin: 0;
-    padding: 0;
     display: flex;
-    justify-content: center; /* Ez kényszeríti középre a main-wrappert */
+    justify-content: center;
+    width: 100%;
+}
+
+.main-wrapper {
+    width: 100%;
+    max-width: 850px; /* Fix szélesség a terv szerint */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Közös kerekített keret stílus */
+.rounded-box {
+    border: 3px solid #1a1a1a;
+    border-radius: 20px;
+    background-color: #4a773c;
+    color: white;
+    box-sizing: border-box;
 }
