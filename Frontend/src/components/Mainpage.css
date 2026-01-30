@@ -1,5 +1,5 @@
 html, body {
-    margin: 0;
+    margin: auto;
     padding: 0;
     width: 100%;
     background-color: #333333; 
@@ -8,19 +8,21 @@ html, body {
 }
 
 #root {
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: center;
+    margin: auto;
 }
 
 .main-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 900px; 
+    width: 1200px; 
     padding: 20px 0;
     font-family: 'Joti One', serif;
     box-sizing: border-box;
+    margin: auto;
 }
 
 .header-img, .header-banner-nav, .header-banner, 
@@ -29,6 +31,13 @@ html, body {
     border: 3px solid #1a1a1a;
     border-radius: 20px;
     box-sizing: border-box; 
+}
+
+.header-banner{
+    width: 100%;
+    padding: 10px 20px;
+    margin-bottom: 35px;
+    display: block;
 }
 
 .header-img {
@@ -47,7 +56,7 @@ html, body {
 
 .nav-links {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     list-style: none;
     padding: 0;
@@ -55,36 +64,39 @@ html, body {
 }
 
 .logo {
-    height: 60px;
-    width: auto;
+    height: 80px;
+    margin: 0px,-5px;
+    display: block;
 }
 
 .nav-links a {
     text-decoration: none;
     color: white;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    text-align: center;
+    text-align: left;
 }
 
-/* FŐOLDAL TARTALOM (Cikk-cakk elrendezés) */
 .main-page-content {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 100%;
+    width: 80%;
+    padding: 0%, 20%;
 }
 
 .content-row {
     display: flex;
-    height: 250px;
-    gap: 10px;
-    width: 100%;
-    border: none !important; 
+    height: 300px; /* Megemeltem kicsit, hogy jobban hasonlítson a tervre */
+    gap: 20px;     /* Nagyobb távolság a dobozok között */
+    width: 100%;   /* Töltse ki a rendelkezésre álló helyet a wrapperben */
+    max-width: 1000px;
+    margin: auto; /* Alul legyen távolság a sorok között */
 }
 
 .content-row.reverse { 
     flex-direction: row-reverse; 
+    margin: auto;
 }
 
 .image-placeholder, .text-placeholder {
@@ -93,6 +105,8 @@ html, body {
     align-items: center;
     font-size: 1.5rem;
     color: white;
+    min-width: 0;
+    flex: 1;
 }
 
 .image-placeholder {
@@ -102,7 +116,7 @@ html, body {
 }
 
 .text-placeholder {
-    flex: 1.6;
+    flex: 1.5;
     background-color: #4a773c;
 }
 
@@ -111,16 +125,16 @@ html, body {
     color: white;
     text-align: center;
     padding: 20px;
-    width: 100%;
+
 }
 
 .description-banner {
     padding: 30px 20px;
     font-size: 1.5rem;
     font-style: italic;
-    margin-bottom: 5px;
-}
+    width: 100%;
 
+}
 
 .birds-page-wrapper {
     width: 100%;

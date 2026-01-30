@@ -9,7 +9,6 @@ const Animals = (props) => {
       </div>
       <div className="bird-label">
         <p>{props.SpeciesName}</p>
-        <button className="more-btn">Továbbiak</button>
       </div>
     </div>
   );

@@ -1,19 +1,18 @@
 html, body {
     margin: 0;
-    padding: 0;
     width: 100%;
     background-color: #333333;
     overflow-x: hidden;
 }
 
-#root {
+#root{
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
 .main-wrapper {
-    width: 100%;
+    width: 80%;
     max-width: 850px; 
     display: flex;
     flex-direction: column;
