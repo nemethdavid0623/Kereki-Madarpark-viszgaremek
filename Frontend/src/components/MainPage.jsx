@@ -14,7 +14,7 @@ const MainPage = () => {
             <li><Link to="http://localhost:5173/Animals">Állataink</Link></li>
             <li><a href="#">Eladó példányaink</a></li>
             <li><a href="#">Rólunk</a></li>
-            <li><a href="#">Admin</a></li>
+            <li><a href="http://localhost:5173/Login">Admin</a></li>
           </ul>
         </nav>
 
