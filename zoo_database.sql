@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Jan 26. 12:18
+-- Létrehozás ideje: 2026. Feb 05. 10:16
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -34,20 +34,17 @@ CREATE TABLE `animal` (
   `SpeciesName` varchar(150) NOT NULL,
   `Quantity` int(11) NOT NULL,
   `ForSaleQuantity` int(11) NOT NULL,
-  `Origin` text NOT NULL,
   `Description` text DEFAULT NULL,
-  `SpeciesID` int(11) NOT NULL,
-  `Habitat` text DEFAULT NULL,
-  `Feeding` text DEFAULT NULL
+  `SpeciesID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- A tábla adatainak kiíratása `animal`
 --
 
-INSERT INTO `animal` (`ID`, `SpeciesName`, `Quantity`, `ForSaleQuantity`, `Origin`, `Description`, `SpeciesID`, `Habitat`, `Feeding`) VALUES
-(2, 'European Hamster', 0, 1, 'Közép-Európa', 'Small nocturnal rodent', 2, 'Grasslands', 'Grains and vegetables'),
-(3, 'Guinea Pig', 10, 0, 'Ázsia keleti partvidéke', 'Domesticated small mammal', 2, 'Enclosure', 'Hay and vegetables');
+INSERT INTO `animal` (`ID`, `SpeciesName`, `Quantity`, `ForSaleQuantity`, `Description`, `SpeciesID`) VALUES
+(2, 'European Hamster', 0, 1, 'Small nocturnal rodent', 2),
+(3, 'Guinea Pig', 10, 0, 'Domesticated small mammal', 2);
 
 -- --------------------------------------------------------
 
@@ -251,7 +248,7 @@ CREATE TABLE `species` (
 
 INSERT INTO `species` (`ID`, `Name`) VALUES
 (1, 'Bird'),
-(2, 'Small Mammal');
+(2, 'Other animals\r\n');
 
 -- --------------------------------------------------------
 
