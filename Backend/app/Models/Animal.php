@@ -16,10 +16,7 @@ class Animal extends Model
         'Quantity',
         'ForSaleQuantity',
         'Description',
-        'SpeciesID',
-        'OriginID',
-        'Habitat',
-        'Feeding'
+        'SpeciesID'
     ];
 
     public function species()
@@ -30,10 +27,5 @@ class Animal extends Model
     public function image()
     {
         return $this->hasMany(image::class, 'AnimalID');
-    }
-
-    public function origin()
-    {
-        return $this->belongsTo(origin::class, 'OriginID');
     }
 }

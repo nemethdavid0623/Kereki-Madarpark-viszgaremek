@@ -27,8 +27,7 @@ class AnimalController extends Controller
 
     public function parkQuantity()
     {
-        $quantity = Animal::with(['image',  'species'])->where('Quantity', '>', 0)->get();
-
+        $quantity = Animal::with(['image', 'species'])->where('Quantity', '>', 0)->get();
         return response()->json($quantity);;
     }
 
@@ -52,9 +51,6 @@ class AnimalController extends Controller
             'ForSaleQuantity' => 'required|numeric|min:0',
             'Description' => 'required|string',
             'SpeciesID' => 'required|numeric',
-            'Origin' => 'required|string',
-            'Habitat' => 'required|string',
-            'Feeding' => 'required|string',
 
         ], [
             'SpeciesName.required' => 'Fajnév megadása kötelező',
@@ -71,16 +67,7 @@ class AnimalController extends Controller
             'Description.string' => 'A leírás formátuma hibás',
 
             'SpeciesID.required' => 'A faj azonosító megadása kötelező',
-            'SpeciesID.numeric' => 'A faj azonosító csak szám lehet',
-
-            'OriginID.required' => 'A származás megadása kötelező',
-            'OriginID.string' => 'A származás azonosító csak szöveg lehet',
-
-            'Habitat.required' => 'Az élőhely megadása kötelező',
-            'Habitat.string' => 'Az élőhely formátuma hibás',
-
-            'Feeding.required' => 'A táplálkozás megadása kötelező',
-            'Feeding.string' => 'A táplálkozás formátuma hibás',
+            'SpeciesID.numeric' => 'A faj azonosító csak szám lehet'
 
         ]);
         if ($validator->fails()) {
@@ -93,9 +80,6 @@ class AnimalController extends Controller
         $NewRecord->ForSaleQuantity = $request->ForSaleQuantity;
         $NewRecord->Description = $request->Description;
         $NewRecord->SpeciesID = $request->SpeciesID;
-        $NewRecord->Origin = $request->Origin;
-        $NewRecord->Habitat = $request->Habitat;
-        $NewRecord->Feeding = $request->Feeding;
 
         $NewRecord->save();
 
