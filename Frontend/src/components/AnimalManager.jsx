@@ -103,10 +103,7 @@ const AnimalManager = () => {
                             <label style={styles.label}>Eladó db:</label>
                             <input type="number" name="ForSaleQuantity" value={animalData.ForSaleQuantity} onChange={handleInputChange} style={styles.input} required />
                         </div>
-                        <div>
-                            <label style={styles.label}>Származás:</label>
-                            <input type="text" name="Origin" value={animalData.Origin} onChange={handleInputChange} style={styles.input} required />
-                        </div>
+                        
                     </div>
 
                     <label style={styles.label}>Rövid leírás:</label>

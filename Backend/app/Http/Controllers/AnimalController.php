@@ -49,7 +49,6 @@ class AnimalController extends Controller
             'SpeciesName' => 'required|string',
             'Quantity' => 'required|numeric',
             'ForSaleQuantity' => 'required|numeric|min:0',
-            'Origin' => 'required|string',
             'Description' => 'required|string',
             'More' => 'required|string',
             'SpeciesID' => 'required|numeric',
@@ -64,9 +63,6 @@ class AnimalController extends Controller
             'ForSaleQuantity.required' => 'Az eladásra szánt mennyiség megadása kötelező',
             'ForSaleQuantity.numeric' => 'Az eladásra szánt mennyiség csak szám lehet',
             'ForSaleQuantity.min' => 'Az eladásra szánt mennyiség nem lehet negatív',
-
-            'Origin.required' => 'A leírás megadása kötelező',
-            'Origin.string' => 'A leírás formátuma hibás',
 
             'Description.required' => 'A leírás megadása kötelező',
             'Description.string' => 'A leírás formátuma hibás',
@@ -85,7 +81,6 @@ class AnimalController extends Controller
         $NewRecord->SpeciesName = $request->SpeciesName;
         $NewRecord->Quantity = $request->Quantity;
         $NewRecord->ForSaleQuantity = $request->ForSaleQuantity;
-        $NewRecord->Origin = $request->Origin;
         $NewRecord->Description = $request->Description;
         $NewRecord->More = $request->More;
         $NewRecord->SpeciesID = $request->SpeciesID;
