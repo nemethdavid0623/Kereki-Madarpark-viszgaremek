@@ -28,48 +28,48 @@ class ImageController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'ImageFile' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'AnimalID'  => 'required|numeric|exists:animal,ID', 
-    ], [
-        'ImageFile.required' => 'Kép kiválasztása kötelező!',
-        'ImageFile.image'    => 'A feltöltött fájl csak kép lehet!',
-        'AnimalID.required'  => 'Az állat azonosítója hiányzik!',
-        'AnimalID.exists'    => 'A megadott állat nem létezik az adatbázisban!',
-    ]);
+    {
+        $validator = Validator::make($request->all(), [
+            'ImageFile' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'AnimalID'  => 'required|numeric|exists:animal,ID',
+        ], [
+            'ImageFile.required' => 'Kép kiválasztása kötelező!',
+            'ImageFile.image'    => 'A feltöltött fájl csak kép lehet!',
+            'AnimalID.required'  => 'Az állat azonosítója hiányzik!',
+            'AnimalID.exists'    => 'A megadott állat nem létezik az adatbázisban!',
+        ]);
 
-    if ($validator->fails()) {
-        return response()->json([
-            "success" => false, 
-            "message" => "Validációs hiba!",
-            "errors" => $validator->errors()->toArray()
-        ], 400);
+        if ($validator->fails()) {
+            return response()->json([
+                "success" => false,
+                "message" => "Validációs hiba!",
+                "errors" => $validator->errors()->toArray()
+            ], 400);
+        }
+
+        if ($request->hasFile('ImageFile')) {
+            $file = $request->file('ImageFile');
+
+
+            $fileName = time() . '_' . $file->getClientOriginalName();
+
+
+            $file->storeAs('uploads', $fileName, 'public');
+
+
+            $NewRecord = new Image();
+            $NewRecord->ImageData = $fileName;
+            $NewRecord->AnimalID = $request->AnimalID;
+            $NewRecord->save();
+
+            return response()->json([
+                "success" => true,
+                "message" => "Kép sikeresen feltöltve és az állathoz rendelve!",
+                "id" => $NewRecord->id,
+                "fileName" => $fileName
+            ], 201);
+        }
     }
-
-    if ($request->hasFile('ImageFile')) {
-        $file = $request->file('ImageFile');
-        
-        
-        $fileName = time() . '_' . $file->getClientOriginalName();
-        
-        
-        $file->storeAs('public/uploads', $fileName);
-
-        
-        $NewRecord = new Image();
-        $NewRecord->ImageData = $fileName;    
-        $NewRecord->AnimalID = $request->AnimalID; 
-        $NewRecord->save();
-
-        return response()->json([
-            "success" => true, 
-            "message" => "Kép sikeresen feltöltve és az állathoz rendelve!",
-            "id" => $NewRecord->id,
-            "fileName" => $fileName
-        ], 201);
-    }
-}
 
     /**
      * Display the specified resource.
