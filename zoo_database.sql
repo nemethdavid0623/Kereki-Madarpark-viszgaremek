@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Feb 05. 10:16
+-- Létrehozás ideje: 2026. Feb 07. 16:44
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -34,7 +34,9 @@ CREATE TABLE `animal` (
   `SpeciesName` varchar(150) NOT NULL,
   `Quantity` int(11) NOT NULL,
   `ForSaleQuantity` int(11) NOT NULL,
+  `Origin` text NOT NULL,
   `Description` text DEFAULT NULL,
+  `More` varchar(50) DEFAULT NULL,
   `SpeciesID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -42,9 +44,9 @@ CREATE TABLE `animal` (
 -- A tábla adatainak kiíratása `animal`
 --
 
-INSERT INTO `animal` (`ID`, `SpeciesName`, `Quantity`, `ForSaleQuantity`, `Description`, `SpeciesID`) VALUES
-(2, 'European Hamster', 0, 1, 'Small nocturnal rodent', 2),
-(3, 'Guinea Pig', 10, 0, 'Domesticated small mammal', 2);
+INSERT INTO `animal` (`ID`, `SpeciesName`, `Quantity`, `ForSaleQuantity`, `Origin`, `Description`, `More`, `SpeciesID`) VALUES
+(2, 'European Hamster', 0, 1, 'Közép-Európa', 'Small nocturnal rodent', NULL, 2),
+(3, 'Guinea Pig', 10, 0, 'Ázsia keleti partvidéke', 'Domesticated small mammal', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -213,8 +215,7 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
-(1, 'App\\Models\\User', 3, 'api-token', 'deaed03a003c41f2f16f9c63ea5f0284598193b49c2e82c8760a4994b6aca4bd', '[\"*\"]', NULL, NULL, '2026-01-20 12:06:48', '2026-01-20 12:06:48'),
-(3, 'App\\Models\\User', 3, 'api-token', '160196bd5078e6b651a1740684f0cc846c03b299702708bc7ddb0733d351d814', '[\"*\"]', NULL, NULL, '2026-01-21 08:57:24', '2026-01-21 08:57:24');
+(7, 'App\\Models\\User', 3, 'api-token', '2994b794e4d38c273f9b68a8198171a71cdc8cd2eb159752fcc49b701fd39211', '[\"*\"]', '2026-02-07 14:22:14', NULL, '2026-02-07 14:12:52', '2026-02-07 14:22:14');
 
 -- --------------------------------------------------------
 
@@ -247,8 +248,8 @@ CREATE TABLE `species` (
 --
 
 INSERT INTO `species` (`ID`, `Name`) VALUES
-(1, 'Bird'),
-(2, 'Other animals\r\n');
+(1, 'Madár'),
+(2, 'Egyéb');
 
 -- --------------------------------------------------------
 
@@ -381,7 +382,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT a táblához `animal`
 --
 ALTER TABLE `animal`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT a táblához `failed_jobs`
@@ -393,7 +394,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT a táblához `image`
 --
 ALTER TABLE `image`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT a táblához `jobs`
@@ -417,7 +418,7 @@ ALTER TABLE `openinghours`
 -- AUTO_INCREMENT a táblához `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT a táblához `species`
