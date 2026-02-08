@@ -6,6 +6,7 @@ import Login from './components/Login';
 import ProtectedRoute from './ProtectedRoot';
 import AdminMenu from './components/AdminMenu';
 import { AuthProvider } from './components/AuthContext';
+import AnimalDelete from './components/AnimalDelete';
 
 function App() {
   return (
@@ -26,6 +27,22 @@ function App() {
             </ProtectedRoute>
           } 
         />
+        <Route 
+            path="/AnimalInput" 
+            element={
+              <ProtectedRoute>
+                <AnimalManager/>
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/AnimalDelete" 
+            element={
+              <ProtectedRoute>
+                <AnimalDelete/>
+              </ProtectedRoute>
+            } 
+          />
       </Routes>
     </Router>
     </AuthProvider>

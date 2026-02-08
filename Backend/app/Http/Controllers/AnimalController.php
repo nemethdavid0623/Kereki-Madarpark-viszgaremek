@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Animal;
+use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Mime\Message;
 
@@ -121,11 +123,26 @@ class AnimalController extends Controller
     {
         $animal = Animal::find($id);
 
-        if (!empty($animal)) {
+        if ($animal) {
+            // 1. Képek lekérése a fájlrendszer miatt
+            $images = Image::where('AnimalID', $id)->get();
+
+            // 2. Fájlok törlése a mappából
+            foreach ($images as $image) {
+                if (Storage::disk('public')->exists('uploads/' . $image->ImageData)) {
+                    Storage::disk('public')->delete('uploads/' . $image->ImageData);
+                }
+            }
+
+            // 3. Rekordok törlése az adatbázisból (tömegesen)
+            Image::where('AnimalID', $id)->delete();
+
+            // 4. Állat törlése
             $animal->delete();
-            return response()->json(["Message" => "Állat törölve!"], status: 202);
-        } else {
-            return response()->json(["Message" => "Állat nem található!"], 404);
+
+            return response()->json(["Message" => "Állat és képei törölve!"], 202);
         }
+
+        return response()->json(["Message" => "Állat nem található!"], 404);
     }
 }

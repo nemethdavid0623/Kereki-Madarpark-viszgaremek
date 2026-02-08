@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
+import AnimalDelete from './AnimalDelete';
 
 const AdminMenu = () => {
     const navigate = useNavigate();
@@ -28,6 +29,7 @@ const AdminMenu = () => {
             <h1>Admin Vezérlőpult</h1>
             <div style={styles.menuBox}>
                 <button onClick={() => navigate('/AnimalInput')}>Állatok kezelése</button>
+                <button onClick={() => navigate('/AnimalDelete')} style={styles.menuBtn}>Állomány megtekintése / Törlés</button>
                 <button onClick={handleLogout} style={styles.logoutBtn}>
                     Biztonságos Kijelentkezés
                 </button>
