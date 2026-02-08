@@ -16,6 +16,7 @@ class Animal extends Model
         'Quantity',
         'ForSaleQuantity',
         'Description',
+        'More',
         'SpeciesID'
     ];
 
@@ -24,7 +25,7 @@ class Animal extends Model
         return $this->belongsTo(species::class, 'SpeciesID');
     }
 
-    public function image()
+    public function images()
     {
         return $this->hasMany(image::class, 'AnimalID');
     }

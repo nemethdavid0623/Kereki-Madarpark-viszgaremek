@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuth } from './AuthContext';
+import { useNavigate } from 'react-router-dom'; // 1. Navigáció importálása
 
 const AnimalDelete = () => {
     const [animals, setAnimals] = useState([]);
     const [loading, setLoading] = useState(true);
     const { token } = useAuth();
+    const navigate = useNavigate(); // 2. Navigáció inicializálása
 
-    // Adatok betöltése a /AllData végpontról
     const fetchAnimals = async () => {
         try {
             const response = await axios.get('http://localhost:8000/api/AllData');
-            // Ha a Laravel Animal::with('images')->get() -et küld, akkor response.data a tömb
             setAnimals(response.data);
         } catch (error) {
             console.error("Hiba az adatok lekérésekor:", error);
@@ -24,12 +24,10 @@ const AnimalDelete = () => {
         fetchAnimals();
     }, []);
 
-    // Törlés funkció
     const handleDelete = async (id) => {
         if (window.confirm("Biztosan törölni szeretnéd ezt az állatot és az összes hozzá tartozó képet?")) {
             try {
                 await axios.delete(`http://localhost:8000/api/DeleteAnimal/${id}`);
-                // Frissítjük a listát a felületen (eltüntetjük a töröltet)
                 setAnimals(prev => prev.filter(animal => animal.ID !== id && animal.id !== id));
                 alert("Sikeres törlés!");
             } catch (error) {
@@ -73,6 +71,14 @@ const AnimalDelete = () => {
                             <td style={styles.td}>{animal.SpeciesID === 1 ? 'Madár' : 'Egyéb'}</td>
                             <td style={styles.td}>{animal.Quantity} db</td>
                             <td style={styles.td}>
+                                {/* 3. SZERKESZTÉS GOMB HOZZÁADÁSA */}
+                                <button 
+                                    onClick={() => navigate('/AnimalInput', { state: { editAnimal: animal } })} 
+                                    style={styles.editBtn}
+                                >
+                                    Szerkesztés
+                                </button>
+
                                 <button 
                                     onClick={() => handleDelete(animal.id || animal.ID)} 
                                     style={styles.deleteBtn}
@@ -99,6 +105,8 @@ const styles = {
     td: { padding: '12px', verticalAlign: 'middle', color: '#333' },
     previewImg: { width: '60px', height: '60px', objectFit: 'cover', borderRadius: '5px', border: '1px solid #ddd' },
     noImg: { width: '60px', height: '60px', backgroundColor: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', color: '#999', borderRadius: '5px' },
+    // 4. ÚJ STÍLUS A SZERKESZTÉS GOMBHOZ
+    editBtn: { backgroundColor: '#3498db', color: 'white', border: 'none', padding: '8px 15px', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold', marginRight: '10px' },
     deleteBtn: { backgroundColor: '#dc3545', color: 'white', border: 'none', padding: '8px 15px', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold' },
     loader: { textAlign: 'center', marginTop: '50px', fontSize: '18px', color: '#666' }
 };

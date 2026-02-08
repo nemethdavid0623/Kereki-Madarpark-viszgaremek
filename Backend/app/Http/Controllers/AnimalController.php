@@ -16,20 +16,20 @@ class AnimalController extends Controller
      */
     public function index()
     {
-        $allData = Animal::with('image', 'species')->get();
+        $allData = Animal::with('images', 'species')->get();
         return response()->json($allData);
     }
 
     public function forSale()
     {
-        $forSale = Animal::with(['image', 'species'])->where('ForSaleQuantity', '>', 0)->get();
+        $forSale = Animal::with(['images', 'species'])->where('ForSaleQuantity', '>', 0)->get();
 
         return response()->json($forSale);;
     }
 
     public function parkQuantity()
     {
-        $quantity = Animal::with(['image', 'species'])->where('Quantity', '>', 0)->get();
+        $quantity = Animal::with(['images', 'species'])->where('Quantity', '>', 0)->get();
         return response()->json($quantity);;
     }
 
@@ -111,9 +111,64 @@ class AnimalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Animal $animal)
+    public function update(Request $request, $id)
     {
-        //
+        $animal = Animal::find($id);
+        if (!$animal) {
+            return response()->json(["success" => false, "message" => "Az állat nem található!"], 404);
+        }
+
+        // 1. Validáció (a kép most opcionális: 'nullable')
+        $validator = Validator::make($request->all(), [
+            'SpeciesName'     => 'required|string',
+            'Quantity'        => 'required|numeric',
+            'ForSaleQuantity' => 'required|numeric|min:0',
+            'Description'     => 'required|string',
+            'More'            => 'required|string',
+            'SpeciesID'       => 'required|numeric',
+            'image'           => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ], [
+            // ... a korábbi magyar hibaüzeneteid ...
+            'image.image' => 'A fájl csak kép lehet!',
+            'image.max'   => 'A kép mérete nem lehet több 2MB-nál!'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(["success" => false, "errors" => $validator->errors()], 400);
+        }
+
+        // 2. Szöveges adatok frissítése
+        $animal->update($request->only([
+            'SpeciesName',
+            'Quantity',
+            'ForSaleQuantity',
+            'Description',
+            'More',
+            'SpeciesID'
+        ]));
+
+        // 3. Képkezelés (Csak ha küldtek új képet)
+        if ($request->hasFile('image')) {
+            $imageRecord = Image::where('AnimalID', $id)->first();
+
+            // Régi kép törlése a mappából, ha létezik
+            if ($imageRecord && Storage::disk('public')->exists('uploads/' . $imageRecord->ImageData)) {
+                Storage::disk('public')->delete('uploads/' . $imageRecord->ImageData);
+            }
+
+            // Új kép mentése
+            $file = $request->file('image');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('uploads', $fileName, 'public');
+
+            // Adatbázis rekord frissítése vagy létrehozása
+            Image::updateOrCreate(
+                ['AnimalID' => $id],
+                ['ImageData' => $fileName]
+            );
+        }
+
+        return response()->json(["success" => true, "message" => "Minden sikeresen frissítve!"], 200);
     }
 
     /**

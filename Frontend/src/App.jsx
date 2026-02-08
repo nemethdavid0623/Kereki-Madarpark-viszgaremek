@@ -15,7 +15,6 @@ function App() {
       <Router>
       <Routes>
         <Route path="/" element={<MainPage/>}/>
-        <Route path="/AnimalInput" element={<AnimalManager/>}/>
         <Route path="/Animals" element={<AnimalsPage/>}/>
         <Route path="/Login" element={<Login/>}/>
 
